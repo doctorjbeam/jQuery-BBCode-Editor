@@ -46,13 +46,14 @@ if (jQuery) {
 			$place		= $textArea.attr("placeholder");
 
 			$container	= "<div id=\"bbContainer_" + mainID + "\">";
-			$container += "<div id=\"" + mainID + "bbCode\" class=\"bbCode\"></div>";
-			$container += "<textarea id=\"" + mainID + "\" title=\"" + $title + "\" placeholder=\"" + $place + "\"></textarea>";
+			$container += "<div id=\"" + mainID + "bbCode\" class=\"bbCode width-max\"></div>";
+			$container += "<textarea name=\"pm_message\" id=\"pm_message\" class='width-max' style='margin: 1em 0;height: 150px;'></textarea>";
 			$container += "</div>";
 
 			$label.after($container);
-			$textArea.remove();
-			$("#" + mainID).bbCode($backOptions);
+			//$textArea.remove();
+			$textArea.replaceWith($container);
+			//$("#" + mainID).bbCode($backOptions);
 		};
 
 		$.fn.bbCode.triggerButton = function (button, $mainID, $main, $preview) {
@@ -654,12 +655,11 @@ if (jQuery) {
 		};
 
 		$.fn.bbCode.makePreview = function (mainID) {
-			$("#bbContainer_" + mainID).append("<div id=\"preview_" + mainID + "\"></div>");
+			$("#bbContainer_" + mainID).append("<h3>Preview</h3><div id=\"preview_" + mainID + "\"></div>");
 			$preview = $("#preview_" + mainID);
 			$preview.css({
-				width: "45%",
-				float: "left",
-				"margin-left": "1%"
+				class: "width-max",
+				"margin-bottom": "10px"
 			});
 			$("#" + mainID + "bbCode").css("width", "100%");
 			$("#" + mainID).css("width", "44%");
