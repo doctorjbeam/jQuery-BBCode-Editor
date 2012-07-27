@@ -103,13 +103,15 @@ if (jQuery) {
 				$.fn.bbCode.doTag("u", "u", $mainID);
 				$.fn.bbCode.triggerChange($main, $mainID, settings.preview);
 			});
-
+			
+			/*
 			$bbCode.append("<span class=\"bbCodeButton sprite_style\" id=\"colorBB" + $mainID + "\">Color</span>");
 			$("#colorBB" + $mainID).button({text: false, icons: {primary: "colorBB"}}).click(function () {
 				$ret = prompt("Enter Color: ", "CECECE");
 				if ($ret) { $.fn.bbCode.doTag("color=#" + $ret, "color", $mainID); }
 				$.fn.bbCode.triggerChange($main, $mainID, settings.preview);
 			});
+			*/
 
 			//link
 			$bbCode.append("<span class=\"bbCodeButton sprite_link\" id=\"linkBB" + $mainID + "\">Link</span>");
@@ -118,19 +120,29 @@ if (jQuery) {
 				if ($ret) { $.fn.bbCode.doTag("url=" + $ret, "url", $mainID); }
 				$.fn.bbCode.triggerChange($main, $mainID, settings.preview);
 			});
+			
+			/*
+			//image
+			$bbCode.append("<span class=\"bbCodeButton sprite_picture\" id=\"imageBB" + $mainID + "\">Image</span>");
+			$("#imageBB" + $mainID).button({text: false, icons: {primary: "imageBB"}}).click(function () {
+				$ret = prompt("Enter Image URL:", "");
+				if ($ret) {	$.fn.bbCode.doTag("img", $ret, "img", $mainID); }
+				$.fn.bbCode.triggerChange($main, $mainID, settings.preview);
+			});
+			*/
 
 			//image
 			$bbCode.append("<span class=\"bbCodeButton sprite_picture\" id=\"imageBB" + $mainID + "\">Image</span>");
 			$("#imageBB" + $mainID).button({text: false, icons: {primary: "imageBB"}}).click(function () {
-				$ret = prompt("Enter Image URL:", "http://images.google.com");
-				if ($ret) {	$.fn.bbCode.doTag("img=" + $ret, "img", $mainID); }
+				$ret = prompt("Enter image URL:", "");
+				$.fn.bbCode.doMiddle("img", $ret, $mainID);
 				$.fn.bbCode.triggerChange($main, $mainID, settings.preview);
 			});
 
 			//youtube
 			$bbCode.append("<span class=\"bbCodeButton sprite_video\" id=\"videoBB" + $mainID + "\">Youtube</span>");
 			$("#videoBB" + $mainID).button({text: false, icons: {primary: "videoBB"}}).click(function () {
-				$ret = prompt("Enter youtube ID:", "PkypXn5S4Rg");
+				$ret = prompt("Enter YouTube video URL:", "PkypXn5S4Rg");
 				$.fn.bbCode.doMiddle("youtube", $ret, $mainID);
 				$.fn.bbCode.triggerChange($main, $mainID, settings.preview);
 			});
@@ -283,7 +295,7 @@ if (jQuery) {
 
 			randNum			= $.fn.bbCode.doPreRender(mainArea);
 
-			$("#preRender" + randNum).html($preContent + "<span style=\"border-bottom: 1px dotted\">" + $preElement + "</span>" + $postContent);
+			$("#preRender" + randNum).html($preContent + "<span style=\"border-bottom: 1px solid\">" + $preElement + "</span>" + $postContent);
 			$ret = $("#preRender" + randNum).html();
 			$("#preRender" + randNum).remove();
 
